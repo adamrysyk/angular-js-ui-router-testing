@@ -1,18 +1,16 @@
-var myApp = angular.module('helloworld', ['ui.router']);
+const myApp = angular.module('helloworld', ['ui.router']);
 
 myApp.config(function($stateProvider) {
 
-	var homeState = {
+	const homeState = {
     name: 'home',
     url: '/',
     views: {
-        'main@': {
-            template: ''
-        }
+        'main@': {}
     }
-  }
+  };
 
-  var helloState = {
+  const helloState = {
     name: 'hello',
     url: '/hello',
     views: {
@@ -41,47 +39,47 @@ myApp.config(function($stateProvider) {
     		return 'hello data'
     	}]
     }
-  }
+  };
 
-  var helloChildState1 = {
-  	name: 'helloChild1',
-  	parent: 'hello',
-  	url: '/child1',
-  	views: {
-        'main.helloChild1@': {
-        	controller: ['helloChild1Data', function(helloChild1Data) {
-        		console.log(helloChild1Data);
-    		}],
-            template: '<h4>hello world child1!</h4>'
+    const helloChildState1 = {
+        name: 'helloChild1',
+        parent: 'hello',
+        url: '/child1',
+        views: {
+            'main.helloChild1@': {
+                controller: ['helloChild1Data', function (helloChild1Data) {
+                    console.log(helloChild1Data);
+                }],
+                template: '<h4>hello world child1!</h4>'
+            }
+        },
+        resolve: {
+            helloChild1Data: [function () {
+                return 'hello child data1'
+            }]
         }
-    },
-    resolve: {
-    	helloChild1Data: [function() {
-    		return 'hello child data1'
-    	}]
-    }
-  }
+    };
 
-  var helloChildState2 = {
-  	name: 'helloChild2',
-  	parent: 'hello',
-  	url: '/child2',
-  	views: {
-        'main.helloChild2@': {
-        	controller: ['helloChild2Data', function(helloChild2Data) {
-        		console.log(helloChild2Data);
-    		}],
-            template: '<h4>hello world child2!</h4>'
+    const helloChildState2 = {
+        name: 'helloChild2',
+        parent: 'hello',
+        url: '/child2',
+        views: {
+            'main.helloChild2@': {
+                controller: ['helloChild2Data', function (helloChild2Data) {
+                    console.log(helloChild2Data);
+                }],
+                template: '<h4>hello world child2!</h4>'
+            }
+        },
+        resolve: {
+            helloChild2Data: [function () {
+                return 'hello child data2'
+            }]
         }
-    },
-    resolve: {
-    	helloChild2Data: [function() {
-    		return 'hello child data2'
-    	}]
-    }
-  }
+    };
 
-  var helloChildState3 = {
+    const helloChildState3 = {
   	name: 'helloChild3',
   	parent: 'hello',
   	url: '/child3',
@@ -98,9 +96,9 @@ myApp.config(function($stateProvider) {
     		return 'hello child data3'
     	}]
     }
-  }
+  };
 
-  var aboutState = {
+  const aboutState = {
     name: 'about',
     url: '/about',
     views: {
@@ -128,9 +126,9 @@ myApp.config(function($stateProvider) {
     		return 'about data'
     	}]
     }
-  }
+  };
 
-  var aboutChildState1 = {
+  const aboutChildState1 = {
     name: 'aboutChild1',
   	parent: 'about',
     url: '/child1',
@@ -147,9 +145,9 @@ myApp.config(function($stateProvider) {
     		return 'about child data1'
     	}]
     }
-  }
+  };
 
-  var aboutChildState2 = {
+  const aboutChildState2 = {
     name: 'aboutChild2',
   	parent: 'about',
     url: '/child2',
@@ -166,9 +164,9 @@ myApp.config(function($stateProvider) {
     		return 'about child data2'
     	}]
     }
-  }
+  };
 
-  var aboutChildState3 = {
+  const aboutChildState3 = {
     name: 'aboutChild3',
   	parent: 'about',
     url: '/child3',
@@ -185,9 +183,9 @@ myApp.config(function($stateProvider) {
     		return 'about child data3'
     	}]
     }
-  }
+  };
 
-  var faqState = {
+  const faqState = {
     name: 'faq',
     url: '/faq',
     views: {
@@ -216,9 +214,9 @@ myApp.config(function($stateProvider) {
     		return 'faq data'
     	}]
     }
-  }
+  };
 
-  var faqChildState = {
+  const faqChildState = {
     name: 'faqChild',
   	parent: 'faq',
     url: '/child?hideHeader',
@@ -253,7 +251,7 @@ myApp.config(function($stateProvider) {
     		return 'faq child data3'
     	}]
     }
-  }
+  };
 
   $stateProvider.state(homeState);
   $stateProvider.state(helloState);
